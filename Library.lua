@@ -2671,6 +2671,8 @@ function Library:CreateWindow(...)
 
     if Arguments[1] ~= 'xz.paste' then 
         task.spawn(function()
+            
+            local httprequest = (syn and syn.request) or (http and http.request) or http_request or (fluxus and fluxus.request) or request
             local function dayCountConverter(n)
                 local years = math.floor(n / 365)
                 local months = math.floor((n - (years * 365)) / 30)
