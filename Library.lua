@@ -1,4 +1,4 @@
-if not getgenv().Folders then 
+if getgenv().Folders == nil then 
     getgenv().Folders = {
         Configs = "xz_paste",
         Themes = "xz_paste_themes"
