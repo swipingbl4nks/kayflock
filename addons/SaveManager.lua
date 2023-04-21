@@ -1,7 +1,7 @@
 local httpService = game:GetService('HttpService')
 
 local SaveManager = {} do
-	SaveManager.Folder = 'xz_paste'
+	SaveManager.Folder = getgenv().Folders.Configs
 	SaveManager.Ignore = {}
 	SaveManager.Parser = {
 		Toggle = {
