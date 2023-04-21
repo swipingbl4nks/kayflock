@@ -3,6 +3,7 @@ if not getgenv().Folders then
         Configs = "xz_paste",
         Themes = "xz_paste_themes"
     }
+    print("Loaded Folders")
 end
 
 local InputService = game:GetService('UserInputService');
