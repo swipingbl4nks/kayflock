@@ -1,3 +1,10 @@
+if not getgenv().Folders then 
+    getgenv().Folders = {
+        Configs = "xz_paste",
+        Themes = "xz_paste_themes"
+    }
+end
+
 local InputService = game:GetService('UserInputService');
 local TextService = game:GetService('TextService');
 local CoreGui = game:GetService('CoreGui');
