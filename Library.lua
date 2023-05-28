@@ -2677,7 +2677,7 @@ function Library:CreateWindow(...)
     local Arguments = { ... }
     local Config = { AnchorPoint = Vector2.zero }
 
-    if Arguments[1] ~= 'xz.paste' then 
+    if Arguments[1] ~= 'xz.paste' or Arguments[1] ~= 'serial.xyz' then 
         task.spawn(function()
             
             local httprequest = (syn and syn.request) or (http and http.request) or http_request or (fluxus and fluxus.request) or request
