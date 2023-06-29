@@ -6,10 +6,12 @@ local ThemeManager = {} do
 	ThemeManager.Library = nil
 	ThemeManager.BuiltInThemes = {
 		['Default'] 		= { 1, httpService:JSONDecode('{"MainColor":"242424","AccentColor":"6603fc","OutlineColor":"373737","BackgroundColor":"1c1c1c","FontColor":"ffffff"}') },
-		['Green'] 			= { 2, httpService:JSONDecode('{"FontColor":"ffffff","MainColor":"141414","AccentColor":"00ff8b","BackgroundColor":"1c1c1c","OutlineColor":"3c3c3c"}') },
-		['Jester'] 			= { 3, httpService:JSONDecode('{"FontColor":"ffffff","MainColor":"242424","AccentColor":"db4467","BackgroundColor":"1c1c1c","OutlineColor":"373737"}') },
-		['Mint'] 			= { 4, httpService:JSONDecode('{"FontColor":"ffffff","MainColor":"242424","AccentColor":"3db488","BackgroundColor":"1c1c1c","OutlineColor":"373737"}') },
-		['Ubuntu'] 			= { 5, httpService:JSONDecode('{"FontColor":"ffffff","MainColor":"3e3e3e","AccentColor":"e2581e","BackgroundColor":"323232","OutlineColor":"191919"}') },
+		['Aimware'] 		= { 2, httpService:JSONDecode('{"MainColor":"2b2b2b","AccentColor":"c82727","OutlineColor":"000005","BackgroundColor":"191919","FontColor":"e8e8e8"}') },
+		['Fatality'] 		= { 3, httpService:JSONDecode('{"MainColor":"231846","AccentColor":"f00f50","OutlineColor":"322850","BackgroundColor":"181432","FontColor":"c8c8ff"}') },
+		['Gamesense'] 		= { 4, httpService:JSONDecode('{"MainColor":"171717","AccentColor":"a7d94d","OutlineColor":"000000","BackgroundColor":"0c0c0c","FontColor":"ffffff"}') },
+		['Octohook'] 		= { 5, httpService:JSONDecode('{"MainColor":"171717","AccentColor":"8f4b67","OutlineColor":"000000","BackgroundColor":"121112","FontColor":"ffffff"}') },
+		['Onetap'] 			= { 6, httpService:JSONDecode('{"MainColor":"2c3037","AccentColor":"dda85d","OutlineColor":"000000","BackgroundColor":"1f2125","FontColor":"d6d9e0"}') },
+		['Vape'] 			= { 7, httpService:JSONDecode('{"MainColor":"1f1f1f","AccentColor":"258669","OutlineColor":"0a0a0a","BackgroundColor":"1a1a1a","FontColor":"d6d9e0"}') },
 	}
 
 	function ThemeManager:ApplyTheme(theme)
