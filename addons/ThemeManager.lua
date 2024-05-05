@@ -5,7 +5,7 @@ local ThemeManager = {} do
 
 	ThemeManager.Library = nil
 	ThemeManager.BuiltInThemes = {
-		['Default'] 		= { 1, httpService:JSONDecode('{"MainColor":"242424","AccentColor":"f980ff","OutlineColor":"373737","BackgroundColor":"1c1c1c","FontColor":"ffffff"}') },
+		['Default'] 		= { 1, httpService:JSONDecode('{"MainColor":"242424","AccentColor":"df88e3","OutlineColor":"373737","BackgroundColor":"1c1c1c","FontColor":"ffffff"}') },
 		['Aimware'] 		= { 2, httpService:JSONDecode('{"MainColor":"2b2b2b","AccentColor":"c82727","OutlineColor":"000005","BackgroundColor":"191919","FontColor":"e8e8e8"}') },
 		['Fatality'] 		= { 3, httpService:JSONDecode('{"MainColor":"231846","AccentColor":"f00f50","OutlineColor":"322850","BackgroundColor":"181432","FontColor":"c8c8ff"}') },
 		['Gamesense'] 		= { 4, httpService:JSONDecode('{"MainColor":"171717","AccentColor":"a7d94d","OutlineColor":"000000","BackgroundColor":"0c0c0c","FontColor":"ffffff"}') },
